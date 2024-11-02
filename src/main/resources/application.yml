@@ -1,0 +1,23 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: CursoArquitecturaHexagonal-Gateway
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: CursoArquitecturaHexagonal
+            uri: http://localhost:8086/students
+            predicates:
+              - Path=/api/students/**
+            filters:
+              # http://localhost:8090/api/students -> http://localhost:8080/students
+              - StripPrefix=1
+          - id: courses-service
+            uri: http://localhost:8097/courses
+            predicates:
+              - Path=/api/courses/**
+            filters:
+              # http://localhost:8090/api/students -> http://localhost:8080/students
+              - StripPrefix=1

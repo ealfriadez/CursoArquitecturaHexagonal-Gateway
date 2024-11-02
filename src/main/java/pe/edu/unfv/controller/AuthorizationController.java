@@ -12,6 +12,7 @@ public class AuthorizationController {
 
     @GetMapping("/authorized")
     public Map<String, String> authorized(@RequestParam String code){
+
         return Collections.singletonMap("code", code);
     }
 }

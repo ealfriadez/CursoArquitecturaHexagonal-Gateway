@@ -25,8 +25,8 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: ${AUTH_SERVER:http//localhost:9000}
-          jwk-set-uri: ${AUTH_SERVER:http//localhost:9000}/oauth2/jwks
+          issuer-uri: ${AUTH_SERVER:http://localhost:9010}
+          jwk-set-uri: ${AUTH_SERVER:http://localhost:9010}/oauth2/jwks
       client:
         registration:
           CursoArquitecturaHexagonal-Gateway:
@@ -34,7 +34,7 @@ spring:
             client-id: CursoArquitecturaHexagonal-Gateway
             client-secret: 12345
             authorization-grant-type: authorization_code
-            redirect-uri: ${REDIRECT_URL://localhost:8090/authorized}
+            redirect-uri: ${REDIRECT_URL:http://localhost:8090/authorized}
             scope:
               - openid
               - profile
@@ -43,4 +43,4 @@ spring:
             client-name: CursoArquitecturaHexagonal-Gateway
         provider:
           spring:
-            issuer-uri: ${AUTH_SERVER:http//localhost:9000}
+            issuer-uri: ${AUTH_SERVER:http://localhost:9010}

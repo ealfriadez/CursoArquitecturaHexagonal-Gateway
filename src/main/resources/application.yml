@@ -20,4 +20,27 @@ spring:
               - Path=/api/courses/**
             filters:
               # http://localhost:8090/api/students -> http://localhost:8080/students
-              - StripPrefix=1
+              - StripPrefix=1ty
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${AUTH_SERVER:http//localhost:9000}
+          jwk-set-uri: ${AUTH_SERVER:http//localhost:9000}/oauth2/jwks
+      client:
+        registration:
+          CursoArquitecturaHexagonal-Gateway:
+            provider: spring
+            client-id: CursoArquitecturaHexagonal-Gateway
+            client-secret: 12345
+            authorization-grant-type: authorization_code
+            redirect-uri: ${REDIRECT_URL://localhost:8090/authorized}
+            scope:
+              - openid
+              - profile
+              - red
+              - write
+            client-name: CursoArquitecturaHexagonal-Gateway
+        provider:
+          spring:
+            issuer-uri: ${AUTH_SERVER:http//localhost:9000}

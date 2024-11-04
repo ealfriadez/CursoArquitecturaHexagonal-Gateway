@@ -20,7 +20,7 @@ spring:
               - Path=/api/courses/**
             filters:
               # http://localhost:8090/api/students -> http://localhost:8080/students
-              - StripPrefix=1ty
+              - StripPrefix=1
   security:
     oauth2:
       resourceserver:
